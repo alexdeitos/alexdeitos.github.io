@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alexsandro Deitos - Database Administrator</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Header Styles */
+    .header {
+      background: linear-gradient(135deg, #2c3e50 0%, #1a2530 100%);
+      color: white;
+      padding: 40px 30px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 25px;
+    }
+
+    .profile-image {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #4cd964;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .profile-info {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .profile-name {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .profile-title {
+      font-size: 20px;
+      color: #4cd964;
+      margin-bottom: 15px;
+    }
+
+    .profile-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+    }
+
+    .contact-item i {
+      color: #4cd964;
+    }
+
+    /* Main Content Styles */
+    .main-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    @media (max-width: 992px) {
+      .main-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      margin-bottom: 25px;
+    }
+
+    .card-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #f0f0f0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-title i {
+      color: #4cd964;
+    }
+
+    /* Profile Section */
+    .profile-text {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    /* Experience Section */
+    .experience-item {
+      margin-bottom: 25px;
+    }
+
+    .company {
+      font-size: 18px;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+
+    .role {
+      font-size: 16px;
+      color: #4cd964;
+      margin: 5px 0;
+    }
+
+    .date {
+      font-size: 14px;
+      color: #7f8c8d;
+      margin-bottom: 10px;
+    }
+
+    .responsibilities {
+      list-style-type: none;
+    }
+
+    .responsibilities li {
+      padding: 8px 0;
+      border-bottom: 1px solid #f0f0f0;
+      position: relative;
+      padding-left: 25px;
+    }
+
+    .responsibilities li:before {
+      content: "•";
+      color: #4cd964;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+
+    .responsibilities li:last-child {
+      border-bottom: none;
+    }
+
+    /* Education Section */
+    .education-item {
+      margin-bottom: 20px;
+    }
+
+    .degree {
+      font-size: 18px;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+
+    .institution {
+      font-size: 16px;
+      color: #4cd964;
+      margin: 5px 0;
+    }
+
+    /* Certifications Section */
+    .certifications-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .certification-item {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      border-left: 4px solid #4cd964;
+    }
+
+    .cert-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 8px;
+    }
+
+    .cert-org {
+      font-size: 14px;
+      color: #7f8c8d;
+      margin-bottom: 8px;
+    }
+
+    .cert-date {
+      font-size: 14px;
+      color: #4cd964;
+      font-weight: 500;
+    }
+
+    .cert-link {
+      display: inline-block;
+      margin-top: 10px;
+      color: #2c3e50;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .cert-link:hover {
+      color: #4cd964;
+    }
+
+    /* Skills Section */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skill {
+      background: #f0f7ff;
+      color: #2c3e50;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 500;
+      border: 1px solid #d0e5ff;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 30px 0;
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 30px;
+      border-top: 1px solid #eee;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="profile-header">
+        <img src="profile.JPEG" alt="Alexsandro Deitos" class="profile-image">
+        <div class="profile-info">
+          <h1 class="profile-name">Alexsandro Deitos</h1>
+          <div class="profile-title">Database Administrator</div>
+          <p class="profile-text">Results-driven DBA passionate about technology with over 14 years of experience in
+            on-premise and cloud database administration, specializing in Oracle, PostgreSQL, MySQL, and AWS RDS.</p>
+
+          <div class="profile-contact">
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Paraná, Brazil</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <span>+55 45 99984123</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <span>alexdeitos01@gmail.com</span>
+            </div>
+            <div class="contact-item">
+              <i class="fab fa-linkedin"></i>
+              <span>linkedin.com/in/alexsandro-deitos/</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Left Column -->
+      <div class="left-column">
+        <!-- Profile -->
+        <div class="card">
+          <h2 class="card-title"><i class="fas fa-user"></i> Professional Profile</h2>
+          <p class="profile-text">
+            I am a highly skilled Database Administrator (DBA) with a solid career since 2010.
+            I am a DBA passionate about technology and results-oriented. My over 14 years of
+            expertise encompass on-premise and cloud database administration, with deep knowledge
+            in Oracle, PostgreSQL, MySQL, and AWS RDS, reinforced by official Oracle, Azure, and
+            AWS certifications. Holding a Bachelor's degree in Information Systems, I am proficient
+            in Linux, Windows, Java, Python, and PHP. I value proactivity, strong interpersonal
+            skills, and a continuous pursuit of innovation and improvement in every challenge.
+          </p>
+        </div>
+
+        <!-- Experience -->
+        <div class="card">
+          <h2 class="card-title"><i class="fas fa-briefcase"></i> Work Experience</h2>
+
+          <div class="experience-item">
+            <div class="company">TIVIT</div>
+            <div class="role">Database Administrator</div>
+            <div class="date">12/2022 – Present | Rio de Janeiro, Brazil (Remote)</div>
+            <ul class="responsibilities">
+              <li>Administer and maintain a diverse database ecosystem for Petrobras, including NoSQL (MongoDB,
+                Cassandra), MySQL, PostgreSQL, Oracle, and AWS cloud databases (DynamoDB, Aurora), ensuring high
+                availability and performance across critical systems.</li>
+              <li>Manage user access, permissions, and security policies, implementing best practices to safeguard
+                sensitive data and comply with regulatory standards.</li>
+              <li>Optimize database performance through advanced query tuning, indexing, and configuration adjustments,
+                reducing query execution time by up to 25% in high-traffic environments.</li>
+              <li>Monitor and troubleshoot database issues, performing root cause analysis and implementing solutions to
+                minimize downtime and ensure operational continuity.</li>
+              <li>Collaborate with DevOps teams to integrate cloud-based database solutions (AWS Aurora, DynamoDB),
+                enhancing scalability and reliability for enterprise applications.</li>
+              <li>Automate routine maintenance tasks, such as backups and patch management, using scripting tools,
+                improving operational efficiency.</li>
+            </ul>
+          </div>
+
+          <div class="experience-item">
+            <div class="company">Stone Co.</div>
+            <div class="role">Database Administrator</div>
+            <div class="date">10/2010 – 12/2022 | Cascavel, Paraná, Brazil</div>
+            <ul class="responsibilities">
+              <li>Installed, configured, and supported MySQL and PostgreSQL databases, ensuring optimal performance and
+                reliability for internal and client-facing applications.</li>
+              <li>Administered Linux-based servers, including Apache web server and PHP environments, to deploy and
+                maintain web applications, supporting over 100 concurrent users.</li>
+              <li>Provided technical support for database-related issues, resolving performance bottlenecks and ensuring
+                99.9% system uptime through proactive maintenance and backups.</li>
+              <li>Developed and optimized SQL queries, scripts to support business reporting, and data analysis,
+                streamlining decision-making processes for cross-functional teams.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="right-column">
+        <!-- Education -->
+        <div class="card">
+          <h2 class="card-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+
+          <div class="education-item">
+            <div class="degree">Bachelor of Science (BS) in Information Systems</div>
+            <div class="institution">Unipar - Paranaense University</div>
+            <div class="date">01/2008 – 12/2012</div>
+          </div>
+        </div>
+
+        <!-- Certifications -->
+        <div class="card">
+          <h2 class="card-title"><i class="fas fa-certificate"></i> Certifications</h2>
+
+          <div class="certifications-grid">
+            <div class="certification-item">
+              <div class="cert-name">AWS Certified Database - Specialty</div>
+              <div class="cert-org">Amazon Web Services</div>
+              <div class="cert-date">05/2024</div>
+              <a href="https://www.credly.com/badges/2e4d074d-d373-403b-a04e-b87698a49eff/public_url"
+                class="cert-link">View credential</a>
+            </div>
+
+            <div class="certification-item">
+              <div class="cert-name">Oracle Certified Professional, MySQL 8.0 Database Administrator</div>
+              <div class="cert-org">Oracle</div>
+              <div class="cert-date">08/2023</div>
+              <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=A4A146A3274EF8B346BE26ACF0EA1864AE4D3D65A55AE30398835A2581762A33"
+                class="cert-link">View credential</a>
+            </div>
+
+            <div class="certification-item">
+              <div class="cert-name">OCI 2025 Certified AI Foundations Associate</div>
+              <div class="cert-org">Oracle</div>
+              <div class="cert-date">05/2025</div>
+              <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=59F598931F8918C810C52C32B04ECDB0F74A67CD052668486738636D52B29210"
+                class="cert-link">View credential</a>
+            </div>
+
+            <div class="certification-item">
+              <div class="cert-name">Oracle Data Platform 2025 Certified Foundations Associate</div>
+              <div class="cert-org">Oracle</div>
+              <div class="cert-date">05/2025</div>
+              <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=1D90370700D8A0183FD74DBEDF54E5571417441906F2CBF65D484D60135266D4"
+                class="cert-link">View credential</a>
+            </div>
+
+            <div class="certification-item">
+              <div class="cert-name">OCI 2025 Certified Foundations Associate</div>
+              <div class="cert-org">Oracle</div>
+              <div class="cert-date">05/2025</div>
+              <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=A52042701330FA87E0D7F5DE654D494D13F50D32984D4DA0044FC1345426F270"
+                class="cert-link">View credential</a>
+            </div>
+
+            <div class="certification-item">
+              <div class="cert-name">Microsoft Certified: Azure Fundamentals</div>
+              <div class="cert-org">Microsoft</div>
+              <div class="cert-date">08/2025</div>
+              <a href="https://learn.microsoft.com/en-us/users/alexsandrodeitos1101/credentials/11aaaa5d8a050ef0?ref=https%3A%2F%2Fwww.linkedin.com%2F"
+                class="cert-link">View credential</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="card">
+          <h2 class="card-title"><i class="fas fa-code"></i> Technical Skills</h2>
+
+          <div class="skills-container">
+            <span class="skill">Oracle</span>
+            <span class="skill">PostgreSQL</span>
+            <span class="skill">MySQL</span>
+            <span class="skill">AWS RDS</span>
+            <span class="skill">NoSQL</span>
+            <span class="skill">MongoDB</span>
+            <span class="skill">Cassandra</span>
+            <span class="skill">DynamoDB</span>
+            <span class="skill">Aurora</span>
+            <span class="skill">Linux</span>
+            <span class="skill">Windows</span>
+            <span class="skill">Java</span>
+            <span class="skill">Python</span>
+            <span class="skill">PHP</span>
+            <span class="skill">Shell Script</span>
+            <span class="skill">CloudFormation</span>
+            <span class="skill">Ansible</span>
+            <span class="skill">Terraform</span>
+            <span class="skill">Dynatrace</span>
+            <span class="skill">Zabbix</span>
+            <span class="skill">Grafana</span>
+            <span class="skill">Database Security</span>
+            <span class="skill">Performance Tuning</span>
+            <span class="skill">Backup & Recovery</span>
+            <span class="skill">High Availability</span>
+            <span class="skill">Disaster Recovery</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>© 2023 Alexsandro Deitos. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+
+</html>
