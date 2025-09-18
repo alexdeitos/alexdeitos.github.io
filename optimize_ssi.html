@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Otimização LinkedIn - Alexsandro Deitos</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #0A66C2;
+      --secondary: #283E4A;
+      --accent: #FF7D14;
+      --light: #F3F6F8;
+      --dark: #1D2226;
+      --success: #5EBA7D;
+      --text: #333333;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--light);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .profile-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, #0A66C2, #FF7D14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 1.5rem;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .stat-item {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1rem;
+      border-radius: 8px;
+      min-width: 150px;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--accent);
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    h2 {
+      color: var(--primary);
+      margin: 2rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    h3 {
+      color: var(--secondary);
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    .intro {
+      font-size: 1.2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      padding: 0 1rem;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .pillar {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .pillar:hover {
+      transform: translateY(-5px);
+    }
+
+    .pillar-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .steps-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .step-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .step-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .step-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--primary);
+      color: white;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+
+    .checklist {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+
+    .checklist li {
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+
+    .checklist li::before {
+      content: "•";
+      color: var(--accent);
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+
+    .resources {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .resource-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .resource-btn {
+      display: inline-flex;
+      align-items: center;
+      background: var(--light);
+      color: var(--primary);
+      text-decoration: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .resource-btn:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .resource-btn i {
+      margin-right: 0.5rem;
+    }
+
+    .progress-container {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .progress-bar {
+      height: 20px;
+      background: var(--light);
+      border-radius: 10px;
+      margin: 1rem 0;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 10px;
+      width: 0;
+      transition: width 1.5s ease-in-out;
+    }
+
+    .progress-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      color: var(--secondary);
+    }
+
+    footer {
+      background: var(--secondary);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+    }
+
+    @media (min-width: 768px) {
+      .profile-container {
+        flex-direction: row;
+        text-align: left;
+        align-items: center;
+      }
+
+      .avatar {
+        margin-right: 1.5rem;
+        margin-bottom: 0;
+      }
+
+      .steps-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-content">
+      <div class="profile-container">
+        <div class="avatar">AD</div>
+        <div>
+          <h1>Alexsandro O. Deitos</h1>
+          <p class="subtitle">Guia Personalizado para Otimização do LinkedIn e SSI</p>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat-item">
+          <div class="stat-value">72</div>
+          <div class="stat-label">Pontuação SSI Atual</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">4</div>
+          <div class="stat-label">Pilares do SSI</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">28</div>
+          <div class="stat-label">Pontos para Meta</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <p class="intro">Este guia personalizado irá ajudá-lo a otimizar seu perfil do LinkedIn e aumentar sua pontuação no
+      Social Selling Index (SSI) para melhorar sua visibilidade, gerar mais conexões e oportunidades.</p>
+
+    <div class="progress-container">
+      <h2>Sua Pontuação SSI Atual</h2>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: 72%;"></div>
+      </div>
+      <div class="progress-labels">
+        <span>0</span>
+        <span>50</span>
+        <span>100</span>
+      </div>
+      <p>Sua pontuação atual de 72 está acima da média, mas há espaço para melhorias significativas.</p>
+    </div>
+
+    <h2>Os 4 Pilares do Social Selling Index</h2>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-icon"><i class="fas fa-user-tie"></i></div>
+        <h3>Marca Pessoal</h3>
+        <p>Estabeleça sua identidade profissional e demonstre experiência</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon"><i class="fas fa-search"></i></div>
+        <h3>Encontrar as Pessoas Certas</h3>
+        <p>Identifique e conecte-se com os profissionais ideais</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon"><i class="fas fa-comment-dots"></i></div>
+        <h3>Interagir com Insights</h3>
+        <p>Compartilhe conteúdo relevante e participe de discussões</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon"><i class="fas fa-handshake"></i></div>
+        <h3>Construir Relacionamentos</h3>
+        <p>Desenvolva conexões genuínas e de confiança</p>
+      </div>
+    </div>
+
+    <h2>Plano de Ação Personalizado</h2>
+    <div class="steps-container">
+      <div class="step-card">
+        <div class="step-header">
+          <span class="step-number">1</span>
+          <h3>Otimize seu Perfil Principal</h3>
+        </div>
+        <p>Melhore os elementos-chave do seu perfil para aumentar sua visibilidade e credibilidade.</p>
+        <ul class="checklist">
+          <li>Adicione uma foto profissional de alta qualidade</li>
+          <li>Crie um headline persuasivo com palavras-chave relevantes</li>
+          <li>Reescreva o resumo (About) focando em valor e soluções</li>
+          <li>Preencha todas as seções de experiência com detalhes</li>
+          <li>Adicione habilidades relevantes e peça endorsements</li>
+        </ul>
+      </div>
+
+      <div class="step-card">
+        <div class="step-header">
+          <span class="step-number">2</span>
+          <h3>Melhore sua Marca Pessoal</h3>
+        </div>
+        <p>Fortaleça sua presença digital e demonstre autoridade no seu setor.</p>
+        <ul class="checklist">
+          <li>Compartilhe conteúdo relevante pelo menos 3x por semana</li>
+          <li>Escreva artigos originais sobre temas do seu expertise</li>
+          <li>Comente em publicações de influenciadores do seu setor</li>
+          <li>Participe de grupos relevantes e contribua ativamente</li>
+          <li>Adicione mídia rica ao seu perfil (vídeos, apresentações)</li>
+        </ul>
+      </div>
+
+      <div class="step-card">
+        <div class="step-header">
+          <span class="step-number">3</span>
+          <h3>Estratégia de Conexões</h3>
+        </div>
+        <p>Conecte-se com as pessoas certas de maneira estratégica e genuína.</p>
+        <ul class="checklist">
+          <li>Personalize TODAS as solicitações de conexão</li>
+          <li>Conecte-se com ex-colegas e clientes satisfeitos</li>
+          <li>Participe de eventos virtuais e conecte-se com participantes</li>
+          <li>Use o Sales Navigator para encontrar leads ideais</li>
+          <li>Estabeleça meta de 5-10 conexões qualitativas por dia</li>
+        </ul>
+      </div>
+
+      <div class="step-card">
+        <div class="step-header">
+          <span class="step-number">4</span>
+          <h3>Engajamento com Conteúdo</h3>
+        </div>
+        <p>Aumente sua visibilidade através de interações estratégicas.</p>
+        <ul class="checklist">
+          <li>Reserve 15 minutos diários para interagir com publicações</li>
+          <li>Comente com insights valiosos, não apenas "parabéns"</li>
+          <li>Compartilhe conteúdo de outras pessoas adicionando sua perspectiva</li>
+          <li>Marque pessoas relevantes em comentários quando apropriado</li>
+          <li>Use hashtags estratégicas para aumentar alcance</li>
+        </ul>
+      </div>
+
+      <div class="step-card">
+        <div class="step-header">
+          <span class="step-number">5</span>
+          <h3>Integre seu GitHub</h3>
+        </div>
+        <p>Use seu perfil técnico para fortalecer sua marca profissional.</p>
+        <ul class="checklist">
+          <li>Adicione seu GitHub ao seu perfil do LinkedIn</li>
+          <li>Destaque projetos relevantes na seção "Featured"</li>
+          <li>Mencione conquistas técnicas específicas no seu resumo</li>
+          <li>Compartilhe updates sobre projetos open-source</li>
+          <li>Escreva artigos técnicos baseados em seus projetos</li>
+        </ul>
+      </div>
+
+      <div class="step-card">
+        <div class="step-header">
+          <span class="step-number">6</span>
+          <h3>Monitoramento e Ajustes</h3>
+        </div>
+        <p>Acompanhe seu progresso e faça ajustes contínuos na estratégia.</p>
+        <ul class="checklist">
+          <li>Verifique seu SSI semanalmente</li>
+          <li>Analise quais conteúdos geram mais engajamento</li>
+          <li>Ajuste sua estratégia com base nos resultados</li>
+          <li>Peça feedback para conexões próximas sobre seu perfil</li>
+          <li>Experimente novos formatos de conteúdo</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="resources">
+      <h2>Seus Links e Recursos</h2>
+      <p>Acesse seus perfis e recursos para implementar as melhorias:</p>
+      <div class="resource-links">
+        <a href="https://www.linkedin.com/sales/ssi" class="resource-btn" target="_blank"><i
+            class="fas fa-chart-line"></i> Seu SSI</a>
+        <a href="https://www.linkedin.com/in/alexsandro-o-deitos/" class="resource-btn" target="_blank"><i
+            class="fab fa-linkedin"></i> Perfil LinkedIn</a>
+        <a href="https://alexdeitos.github.io/" class="resource-btn" target="_blank"><i class="fab fa-github"></i> Seu
+          GitHub</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Guia Personalizado para Alexsandro O. Deitos - 2023</p>
+    <p>Implemente essas estratégias consistentemente para melhorar seu SSI e presença no LinkedIn</p>
+  </footer>
+
+  <script>
+    // Animação de preenchimento da barra de progresso
+    document.addEventListener('DOMContentLoaded', function () {
+      const progressFill = document.querySelector('.progress-fill');
+      setTimeout(() => {
+        progressFill.style.width = '72%';
+      }, 500);
+    });
+  </script>
+</body>
+
+</html>
