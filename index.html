@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alexsandro Deitos - Database Administrator</title>
+  <title>Alexsandro Deitos - Senior Database Administrator</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * {
@@ -194,10 +194,10 @@
       margin: 5px 0;
     }
 
-    /* Certifications Section */
-    .certifications-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* Certifications Section - Updated */
+    .certifications-list {
+      display: flex;
+      flex-direction: column;
       gap: 20px;
     }
 
@@ -206,23 +206,28 @@
       padding: 20px;
       border-radius: 8px;
       border-left: 4px solid #4cd964;
-      display: flex;
-      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
 
-    .cert-badge {
-      width: 100px;
-      height: 100px;
-      object-fit: contain;
-      margin-bottom: 15px;
-      align-self: center;
+    .certification-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .cert-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     .cert-name {
       font-size: 16px;
       font-weight: 600;
       color: #2c3e50;
-      margin-bottom: 8px;
+      margin-bottom: 5px;
     }
 
     .cert-org {
@@ -235,6 +240,14 @@
       font-size: 14px;
       color: #4cd964;
       font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .cert-knowledge {
+      font-size: 14px;
+      color: #555;
+      margin-top: 10px;
+      line-height: 1.5;
     }
 
     .cert-link {
@@ -287,7 +300,7 @@
         <img src="profile.png" alt="Alexsandro Deitos" class="profile-image">
         <div class="profile-info">
           <h1 class="profile-name">Alexsandro Deitos</h1>
-          <div class="profile-title">Database Administrator</div>
+          <div class="profile-title">Senior Database Administrator</div>
           <p class="profile-text">Results-driven DBA passionate about technology with over 14 years of experience in
             on-premise and cloud database administration, specializing in Oracle, PostgreSQL, MySQL, and AWS RDS.</p>
 
@@ -341,8 +354,8 @@
             <div class="role">Database Administrator</div>
             <div class="date">12/2022 – Present | Rio de Janeiro, Brazil (Remote)</div>
             <ul class="responsibilities">
-              <li>Administer and maintain a diverse database ecosystem for Petrobras, including NoSQL (MongoDB,
-                Cassandra), MySQL, PostgreSQL, Oracle, and AWS cloud databases (DynamoDB, Aurora), ensuring high
+              <li>Administer and maintain a diverse database ecosystem for our clients, including
+                MySQL, PostgreSQL, Oracle, and AWS cloud databases (DynamoDB, Aurora), ensuring high
                 availability and performance across critical systems.</li>
               <li>Manage user access, permissions, and security policies, implementing best practices to safeguard
                 sensitive data and comply with regulatory standards.</li>
@@ -392,85 +405,127 @@
         <div class="card">
           <h2 class="card-title"><i class="fas fa-certificate"></i> Certifications</h2>
 
-          <div class="certifications-grid">
+          <div class="certifications-list">
             <div class="certification-item">
-              <img src="https://images.credly.com/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png"
-                alt="AWS Certified Database - Specialty" class="cert-badge">
-              <div class="cert-name">AWS Certified Database - Specialty</div>
-              <div class="cert-org">Amazon Web Services</div>
-              <div class="cert-date">05/2024</div>
+              <div class="cert-header">
+                <div>
+                  <div class="cert-name">AWS Certified Database - Specialty</div>
+                  <div class="cert-org">Amazon Web Services</div>
+                </div>
+                <div class="cert-date">05/2024</div>
+              </div>
+              <div class="cert-knowledge">
+                Advanced knowledge of AWS database services including RDS, DynamoDB, Aurora, and database migration
+                strategies.
+              </div>
               <a href="https://www.credly.com/badges/2e4d074d-d373-403b-a04e-b87698a49eff/public_url"
                 class="cert-link">View credential</a>
             </div>
 
             <div class="certification-item">
-              <img src="MYSQLDBA80OCP.png" alt="Oracle MySQL 8.0 DBA" class="cert-badge">
-              <div class="cert-name">Oracle Certified Professional, MySQL 8.0 Database Administrator</div>
-              <div class="cert-org">Oracle</div>
-              <div class="cert-date">08/2023</div>
+              <div class="cert-header">
+                <div>
+                  <div class="cert-name">Oracle Certified Professional, MySQL 8.0 Database Administrator</div>
+                  <div class="cert-org">Oracle</div>
+                </div>
+                <div class="cert-date">08/2023</div>
+              </div>
+              <div class="cert-knowledge">
+                Expertise in MySQL 8.0 administration, security, performance tuning, backup/recovery, and high
+                availability solutions.
+              </div>
               <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=A4A146A3274EF8B346BE26ACF0EA1864AE4D3D65A55AE30398835A2581762A33"
                 class="cert-link">View credential</a>
             </div>
 
             <div class="certification-item">
-              <img src="OCI25AICFAV1.png" alt="OCI AI Foundations Associate" class="cert-badge">
-              <div class="cert-name">OCI 2025 Certified AI Foundations Associate</div>
-              <div class="cert-org">Oracle</div>
-              <div class="cert-date">05/2025</div>
+              <div class="cert-header">
+                <div>
+                  <div class="cert-name">OCI 2025 Certified AI Foundations Associate</div>
+                  <div class="cert-org">Oracle</div>
+                </div>
+                <div class="cert-date">05/2025</div>
+              </div>
+              <div class="cert-knowledge">
+                Foundational knowledge of AI concepts, machine learning, and Oracle Cloud Infrastructure AI services.
+              </div>
               <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=59F598931F8918C810C52C32B04ECDB0F74A67CD052668486738636D52B29210"
                 class="cert-link">View credential</a>
             </div>
 
             <div class="certification-item">
-              <img src="OCI25DCFAV2.png" alt="Oracle Data Platform Foundations" class="cert-badge">
-              <div class="cert-name">Oracle Data Platform 2025 Certified Foundations Associate</div>
-              <div class="cert-org">Oracle</div>
-              <div class="cert-date">05/2025</div>
+              <div class="cert-header">
+                <div>
+                  <div class="cert-name">Oracle Data Platform 2025 Certified Foundations Associate</div>
+                  <div class="cert-org">Oracle</div>
+                </div>
+                <div class="cert-date">05/2025</div>
+              </div>
+              <div class="cert-knowledge">
+                Understanding of Oracle's data management ecosystem including databases, analytics, and data integration
+                tools.
+              </div>
               <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=1D90370700D8A0183FD74DBEDF54E5571417441906F2CBF65D484D60135266D4"
                 class="cert-link">View credential</a>
             </div>
 
             <div class="certification-item">
-              <img src="OCI25FNDCFAV1.png" alt="OCI Foundations Associate" class="cert-badge">
-              <div class="cert-name">OCI 2025 Certified Foundations Associate</div>
-              <div class="cert-org">Oracle</div>
-              <div class="cert-date">05/2025</div>
+              <div class="cert-header">
+                <div>
+                  <div class="cert-name">OCI 2025 Certified Foundations Associate</div>
+                  <div class="cert-org">Oracle</div>
+                </div>
+                <div class="cert-date">05/2025</div>
+              </div>
+              <div class="cert-knowledge">
+                Core understanding of Oracle Cloud Infrastructure services, architecture, and cloud concepts.
+              </div>
               <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=A52042701330FA87E0D7F5DE654D494D13F50D32984D4DA0044FC1345426F270"
-                class="cert-link">View credential</a>
-            </div>
-            <div class="certification-item">
-              <img src="ODBAWSOCP.jpeg" alt="Oracle Database@AWS Certified Architect Professional" class="cert-badge">
-              <div class="cert-name">Oracle Database@AWS Certified Architect Professional</div>
-              <div class="cert-org">Oracle</div>
-              <div class="cert-date">10/2025</div>
-              <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=9B87805957C6044C1283DD96CF40318D8A8CCE22C5E85FC10273BEEF0C43A0CB"
-                class="cert-link">View credential</a>
-            </div>
-            <div class="certification-item">
-              <img src="OCI2025MCAOCP.jpeg"
-                alt="Oracle Cloud Infrastructure 2025 Certified Multicloud Architect Professional" class="cert-badge">
-              <div class="cert-name">Oracle Cloud Infrastructure 2025 Certified Multicloud Architect Professional</div>
-              <div class="cert-org">Oracle</div>
-              <div class="cert-date">10/2025</div>
-              <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=820842BA0FB8CD5647970B029DFCAFE90A87AF0C207D2215C0A6A4EC5D21EF64"
-                class="cert-link">View credential</a>
-            </div>
-            <div class="certification-item">
-              <img src="ODBCS25CP.jpeg"
-                alt="Oracle Cloud Infrastructure 2025 Certified Multicloud Architect Professional" class="cert-badge">
-              <div class="cert-name">Oracle Cloud Infrastructure 2025 Certified Multicloud Architect Professional</div>
-              <div class="cert-org">Oracle</div>
-              <div class="cert-date">10/2025</div>
-              <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=49C1D7D7345B577C4BA69A432EDD996432B4FE0C2129D866FAB6B227899A40F1"
                 class="cert-link">View credential</a>
             </div>
 
             <div class="certification-item">
-              <img src="https://images.credly.com/images/be8fcaeb-c769-4858-b567-ffaaa73ce8cf/image.png"
-                alt="Microsoft Azure Fundamentals" class="cert-badge">
-              <div class="cert-name">Microsoft Certified: Azure Fundamentals</div>
-              <div class="cert-org">Microsoft</div>
-              <div class="cert-date">08/2025</div>
+              <div class="cert-header">
+                <div>
+                  <div class="cert-name">Oracle Database@AWS Certified Architect Professional</div>
+                  <div class="cert-org">Oracle</div>
+                </div>
+                <div class="cert-date">10/2025</div>
+              </div>
+              <div class="cert-knowledge">
+                Advanced skills in designing and implementing Oracle Database solutions on AWS infrastructure.
+              </div>
+              <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=9B87805957C6044C1283DD96CF40318D8A8CCE22C5E85FC10273BEEF0C43A0CB"
+                class="cert-link">View credential</a>
+            </div>
+
+            <div class="certification-item">
+              <div class="cert-header">
+                <div>
+                  <div class="cert-name">OCI 2025 Certified Multicloud Architect Professional</div>
+                  <div class="cert-org">Oracle</div>
+                </div>
+                <div class="cert-date">10/2025</div>
+              </div>
+              <div class="cert-knowledge">
+                Expertise in designing multicloud architectures using Oracle Cloud Infrastructure with other cloud
+                platforms.
+              </div>
+              <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=820842BA0FB8CD5647970B029DFCAFE90A87AF0C207D2215C0A6A4EC5D21EF64"
+                class="cert-link">View credential</a>
+            </div>
+
+            <div class="certification-item">
+              <div class="cert-header">
+                <div>
+                  <div class="cert-name">Microsoft Certified: Azure Fundamentals</div>
+                  <div class="cert-org">Microsoft</div>
+                </div>
+                <div class="cert-date">08/2025</div>
+              </div>
+              <div class="cert-knowledge">
+                Foundational knowledge of cloud concepts, Azure services, security, privacy, compliance, and pricing.
+              </div>
               <a href="https://learn.microsoft.com/en-us/users/alexsandrodeitos1101/credentials/11aaaa5d8a050ef0?ref=https%3A%2F%2Fwww.linkedin.com%2F"
                 class="cert-link">View credential</a>
             </div>
